@@ -1,3 +1,8 @@
+---
+title: "Data Reshaping Cheatsheet"
+output: github_document
+---
+
 Stat 545 Assignment 4 Tidy Data and Joins
 ===
 
