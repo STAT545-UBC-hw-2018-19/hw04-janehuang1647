@@ -1,0 +1,69 @@
+---
+title: "Assignment 4"
+output: github_document
+---
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(gridExtra))
+```
+
+## Exploring gather() and spread() for data reshaping
+The prompt I have chosen to explore is acivity 2:
+
+-* Make a tibble with one row per year and columns for life expectancy for two or more countries.
+-* Use `knitr::kable()` to make this table look pretty in your rendered homework.
+Take advantage of this new data shape to scatterplot life expectancy for one country against that of another.
+
+
+
+
+First, we explore the dataset `gapminder` and check the range of the year.
+Then we choose three country Canada ,Mexico and China and store their life-expectancy data in the new variable new_exp.
+```{r}
+head(gapminder)
+range(gapminder$year)
+
+## we first extract the life expectancy data for these three country from the gapminder dataset 
+temp <- gapminder %>% 
+  select(country,lifeExp,year) %>% 
+  filter(country == "Canada" | country == "China" | country == "Mexico") 
+ 
+# then a tibble is created with year, country and lifeExp
+tidy_ver <- tibble(year=temp$year,country=temp$country,lifeExp=temp$lifeExp)
+knitr::kable(tidy_ver)
+
+
+# then we would like to form an untidy tibble by separating the data by country
+ result <- spread(tidy_ver, key = "country", value = "lifeExp")
+ knitr::kable(result)
+
+```
+
+The data appeared under each country represented the life-expectancy of the corresponding country.
+To tidy up the above data, we could simply use the gather() function to reverse the process as shown below:
+
+```{r}
+reverse <-  gather(result,key="country",value="life_Expectancy", China, Mexico,Canada)
+head(reverse)
+```
+
+
+
+The following step is to visualise the data with the scatterplot using these reshaped data. 
+Here shows the pairwise comparison of life expectancy among these three country.Meanwhile, the different color stands for data from the different year.
+```{r}
+p1 <- result %>% 
+  ggplot(aes(Canada, China))+
+  geom_point(aes(colour=year))
+
+p2 <- result %>% 
+  ggplot(aes(Mexico, China))+
+  geom_point(aes(color=year))
+
+p3 <- result %>% 
+  ggplot(aes(Canada, Mexico))+
+  geom_point(aes(color=year))
+grid.arrange(p1,p2,p3,nrow=2,ncol=2)
+```
+
