@@ -12,7 +12,8 @@ Exploring gather() and spread() for data reshaping
 
 The prompt I have chosen to explore is acivity 2:
 
--\* Make a tibble with one row per year and columns for life expectancy for two or more countries. -\* Use `knitr::kable()` to make this table look pretty in your rendered homework. Take advantage of this new data shape to scatterplot life expectancy for one country against that of another.
+-   Make a tibble with one row per year and columns for life expectancy for two or more countries.
+-   Use `knitr::kable()` to make this table look pretty in your rendered homework. Take advantage of this new data shape to scatterplot life expectancy for one country against that of another.
 
 First, we explore the dataset `gapminder` and check the range of the year. Then we choose three country Canada ,Mexico and China and store their life-expectancy data in the new variable new\_exp.
 
