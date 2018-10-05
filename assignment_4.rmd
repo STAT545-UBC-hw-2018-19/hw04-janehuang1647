@@ -22,6 +22,7 @@ First, we explore the dataset `gapminder` and check the range of the year.
 Then we choose three country Canada ,Mexico and China and store their life-expectancy data in the new variable new_exp.
 ```{r}
 head(gapminder)
+
 range(gapminder$year)
 
 ## we first extract the life expectancy data for these three country from the gapminder dataset 
