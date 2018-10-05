@@ -173,7 +173,8 @@ ggplot(temp,aes(factor(continent),factor(lang_name)))+
   geom_bin2d()
 ```
 
-From the above graph, we can conclude that Asia and Europe have more diverse language while countries in Americas and Oceania speaks common languages.
+
+Although there are a lot of different languages all over the world, from the above graph, we can conclude that Asia and Europe have more diverse language while countries in Americas and Oceania speaks common languages.
 
  
 
