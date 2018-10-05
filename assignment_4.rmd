@@ -67,3 +67,113 @@ p3 <- result %>%
 grid.arrange(p1,p2,p3,nrow=2,ncol=2)
 ```
 
+
+## Join Prompts (join, merge, look up)
+
+The prompt I have chosen to explore is acivity 1:
+
+First we create dataframe that complementary to Gapminder.
+we started with reading in a new dataset which contained the language spoken by the specific country.
+
+```{r}
+temp <- read_csv("country_list.csv")
+head(temp)
+## rename the country to match the gapminder dataset
+t1 <- rename(temp,country=country_name)
+## We keep only the lang_name and lang_code in the new table
+
+new_data <- t1 %>% 
+  select(country,lang_name,lang_code) 
+
+head(new_data)
+
+```
+
+
+Then we join the gapminder with the new_data using different join function.
+
+# 1. `left_join`
+in this case, the new_data is matched to the gapminder dataset.
+```{r}
+left_join(gapminder,new_data,by="country")
+```
+
+# 2. `right_join`
+in this case, the gapminder is matched to the new_data.
+```{r}
+right_join(gapminder,new_data,by="country")
+```
+
+These two methods results in different row numbers since they are joined with different reference. 
+
+# 3. `semi_join`
+
+```{r}
+## This only return return all rows from new_data where there are matching values in gapminder, keeping just columns from new_data.
+semi_join(new_data,gapminder,by="country")
+
+##  This only return return all rows from gapminder where there are matching values in new_data, keeping just columns from gapminder.
+semi_join(gapminder,new_data,by="country")
+```
+
+# 4. `anti_join`
+
+With the anti_join, it returns all rows from new_data where there are not matching values in gapminder, keeping just columns from new_data. So the following table shows the country with no information in gapminder.
+```{r}
+anti_join(new_data, gapminder)
+```
+
+
+# 5. `inner_join()`
+
+This return all rows from gapminder where there are matching values in new_data, and all columns from gapminder and new_data. If there are multiple matches between gapminder and new_data, all combination of the matches are returned.
+
+```{r}
+inner_join(gapminder,new_data)
+
+```
+
+# 6. `full_join()`
+
+This is the optimal method to retain all the useful information among the dataset new_data and gapminder.
+`full_join` return all rows and all columns from both new_data and gapminder. Where there are not matching values, returns NA for the one missing.
+```{r}
+
+full_join(new_data, gapminder)
+```
+
+
+
+
+
+
+# 7. `bind_rows()`
+
+With function `bind_rows()`, it simply append the gapminder to new_data as the new row and the missing information in each entry will be shown as "NA". The problem with this join method is it won't match the row withe the same country name, therefore, it is not useful for analysis. In addition, another similar function `bin_cols' will not work in this case since these datasets have different row number. 
+
+```{r}
+bind_rows(new_data,gapminder)
+```
+
+ Finally, we can have plottings to better visualise the spread of different languages:
+```{r}
+temp <- inner_join(gapminder, new_data, by = "country") %>% 
+  select(continent,country,lang_name)
+## spread the language by language name
+
+lang_count <- temp %>% 
+  group_by(lang_name) %>% 
+  tally()
+knitr::kable(lang_count)
+
+## we are going to plot the languages used by more than 15 countries
+
+ggplot(temp,aes(factor(continent),factor(lang_name)))+
+  geom_bin2d()
+```
+
+From the above graph, we can conclude that Asia and Europe have more diverse language while countries in Americas and Oceania speaks common languages.
+
+ 
+
+
