@@ -20,4 +20,6 @@ join function  | filter join function
  `right_join`  |   `anti_join`
  `anti_join`  |
    `inner_join`  |
-   `full_join`
+   `full_join`|
+   
+For the join functions, the prompt that I have attempted is activity 1. A new data frame with extra column on spoken language is created and then this joined with the gapminder data frame using different join functions. The results and its explanation are presented here: [**Join Function**](https://github.com/STAT545-UBC-students/hw04-janehuang1647/blob/master/assignment_4.md#join-prompts-join-merge-look-up) 
