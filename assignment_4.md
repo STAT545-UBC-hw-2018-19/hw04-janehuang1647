@@ -10,7 +10,7 @@ suppressPackageStartupMessages(library(gridExtra))
 Exploring gather() and spread() for data reshaping
 --------------------------------------------------
 
-The prompt I have chosen to explore is acivity 2:
+The prompt I have chosen to explore is **acivity 2**:
 
 -   Make a tibble with one row per year and columns for life expectancy for two or more countries.
 -   Use `knitr::kable()` to make this table look pretty in your rendered homework. Take advantage of this new data shape to scatterplot life expectancy for one country against that of another.
@@ -147,7 +147,7 @@ grid.arrange(p1,p2,p3,nrow=2,ncol=2)
 Join Prompts (join, merge, look up)
 -----------------------------------
 
-The prompt I have chosen to explore is acivity 1:
+The prompt I have chosen to explore is **acivity 1**:
 
 First we create dataframe that complementary to Gapminder. we started with reading in a new dataset which contained the language spoken by the specific country.
 
