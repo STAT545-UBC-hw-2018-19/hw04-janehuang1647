@@ -93,13 +93,14 @@ head(new_data)
 
 Then we join the gapminder with the new_data using different join function.
 
-# 1. `left_join`
+# left_join()
+
 in this case, the new_data is matched to the gapminder dataset.
 ```{r}
 left_join(gapminder,new_data,by="country")
 ```
 
-# 2. `right_join`
+# right_join()
 in this case, the gapminder is matched to the new_data.
 ```{r}
 right_join(gapminder,new_data,by="country")
@@ -107,7 +108,7 @@ right_join(gapminder,new_data,by="country")
 
 These two methods results in different row numbers since they are joined with different reference. 
 
-# 3. `semi_join`
+# semi_join()
 
 ```{r}
 ## This only return return all rows from new_data where there are matching values in gapminder, keeping just columns from new_data.
@@ -117,7 +118,7 @@ semi_join(new_data,gapminder,by="country")
 semi_join(gapminder,new_data,by="country")
 ```
 
-# 4. `anti_join`
+# anti_join()
 
 With the anti_join, it returns all rows from new_data where there are not matching values in gapminder, keeping just columns from new_data. So the following table shows the country with no information in gapminder.
 ```{r}
@@ -125,7 +126,7 @@ anti_join(new_data, gapminder)
 ```
 
 
-# 5. `inner_join()`
+# inner_join()
 
 This return all rows from gapminder where there are matching values in new_data, and all columns from gapminder and new_data. If there are multiple matches between gapminder and new_data, all combination of the matches are returned.
 
@@ -134,7 +135,7 @@ inner_join(gapminder,new_data)
 
 ```
 
-# 6. `full_join()`
+# full_join()
 
 This is the optimal method to retain all the useful information among the dataset new_data and gapminder.
 `full_join` return all rows and all columns from both new_data and gapminder. Where there are not matching values, returns NA for the one missing.
@@ -148,7 +149,7 @@ full_join(new_data, gapminder)
 
 
 
-# 7. `bind_rows()`
+# bind_rows()
 
 With function `bind_rows()`, it simply append the gapminder to new_data as the new row and the missing information in each entry will be shown as "NA". The problem with this join method is it won't match the row withe the same country name, therefore, it is not useful for analysis. In addition, another similar function `bin_cols' will not work in this case since these datasets have different row number. 
 
