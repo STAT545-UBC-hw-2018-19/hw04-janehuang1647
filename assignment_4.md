@@ -149,7 +149,7 @@ Join Prompts (join, merge, look up)
 
 The prompt I have chosen to explore is **acivity 1**:
 
-First we create dataframe that complementary to Gapminder. we started with reading in a new dataset which contained the language spoken by the specific country.
+First we create dataframe that complementary to Gapminder. we started with reading in a new dataset which contained the language spoken by the specific country **country\_list.csv**.
 
 ``` r
 temp <- read_csv("country_list.csv")
