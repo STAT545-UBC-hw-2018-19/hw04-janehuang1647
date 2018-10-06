@@ -202,8 +202,8 @@ head(new_data)
 
 Then we join the gapminder with the new\_data using different join function.
 
-1.left\_join
-============
+1. left\_join
+=============
 
 in this case, the new\_data is matched to the gapminder dataset.
 
@@ -229,8 +229,8 @@ left_join(gapminder,new_data,by="country")
     ## 10 Afghanis~ Asia       1997    41.8  2.22e7      635. Pashto    ps       
     ## # ... with 1,718 more rows
 
-2. `right_join`
-===============
+2. right\_join
+==============
 
 in this case, the gapminder is matched to the new\_data.
 
@@ -258,8 +258,8 @@ right_join(gapminder,new_data,by="country")
 
 These two methods results in different row numbers since they are joined with different reference.
 
-3. `semi_join`
-==============
+3. semi\_join
+=============
 
 ``` r
 ## This only return return all rows from new_data where there are matching values in gapminder, keeping just columns from new_data.
@@ -307,8 +307,8 @@ semi_join(gapminder,new_data,by="country")
     ## 10 Afghanistan Asia       1997    41.8 22227415      635.
     ## # ... with 1,550 more rows
 
-4. `anti_join`
-==============
+4. anti\_join
+=============
 
 With the anti\_join, it returns all rows from new\_data where there are not matching values in gapminder, keeping just columns from new\_data. So the following table shows the country with no information in gapminder.
 
@@ -336,8 +336,8 @@ anti_join(new_data, gapminder)
     ## 10 Belarus             Belarusian    be       
     ## # ... with 91 more rows
 
-5. `inner_join()`
-=================
+5. inner\_join()
+================
 
 This return all rows from gapminder where there are matching values in new\_data, and all columns from gapminder and new\_data. If there are multiple matches between gapminder and new\_data, all combination of the matches are returned.
 
@@ -365,8 +365,8 @@ inner_join(gapminder,new_data)
     ## 10 Afghanis~ Asia       1997    41.8  2.22e7      635. Pashto    ps       
     ## # ... with 1,574 more rows
 
-6. `full_join()`
-================
+6. full\_join()
+===============
 
 This is the optimal method to retain all the useful information among the dataset new\_data and gapminder. `full_join` return all rows and all columns from both new\_data and gapminder. Where there are not matching values, returns NA for the one missing.
 
@@ -394,8 +394,8 @@ full_join(new_data, gapminder)
     ## 10 Afghanis~ Pashto    ps        Asia       1997    41.8  2.22e7      635.
     ## # ... with 1,819 more rows
 
-7. `bind_rows()`
-================
+7. function `bind_rows()`
+=========================
 
 With function `bind_rows()`, it simply append the gapminder to new\_data as the new row and the missing information in each entry will be shown as "NA". The problem with this join method is it won't match the row withe the same country name, therefore, it is not useful for analysis. In addition, another similar function \`bin\_cols' will not work in this case since these datasets have different row number.
 
