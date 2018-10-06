@@ -202,8 +202,8 @@ head(new_data)
 
 Then we join the gapminder with the new\_data using different join function.
 
-1. `left_join`
-==============
+1.left\_join
+============
 
 in this case, the new\_data is matched to the gapminder dataset.
 
