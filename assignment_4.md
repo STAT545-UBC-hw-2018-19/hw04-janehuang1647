@@ -142,7 +142,7 @@ p3 <- result %>%
 grid.arrange(p1,p2,p3,nrow=2,ncol=2)
 ```
 
-![](assignment_4_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](assignment_4_files/figure-markdown_github/scatterplot%20for%20comparison%20between%20Canada%20China%20and%20Mexico-1.png)
 
 Join Prompts (join, merge, look up)
 -----------------------------------
@@ -421,7 +421,7 @@ bind_rows(new_data,gapminder)
     ## 10 Armenia    Armenian   hy        <NA>         NA      NA    NA        NA
     ## # ... with 1,927 more rows
 
-Finally, we can have plottings to better visualise the spread of different languages:
+Finally, we can have plottings to better visualise the numbers of different languages in each continent:
 
 ``` r
 temp <- inner_join(gapminder, new_data, by = "country") %>% 
@@ -506,6 +506,6 @@ ggplot(temp,aes(factor(continent),factor(lang_name)))+
   geom_bin2d()
 ```
 
-![](assignment_4_files/figure-markdown_github/unnamed-chunk-13-1.png)
+![](assignment_4_files/figure-markdown_github/comparison%20of%20different%20languages-1.png)
 
 Although there are a lot of different languages all over the world, from the above graph, we can conclude that Asia and Europe have more diverse language while countries in Americas and Oceania speaks common languages.

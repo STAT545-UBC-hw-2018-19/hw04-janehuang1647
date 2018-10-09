@@ -53,7 +53,7 @@ head(reverse)
 
 The following step is to visualise the data with the scatterplot using these reshaped data. 
 Here shows the pairwise comparison of life expectancy among these three country.Meanwhile, the different color stands for data from the different year.
-```{r}
+```{r,scatterplot for comparison between Canada China and Mexico}
 p1 <- result %>% 
   ggplot(aes(Canada, China))+
   geom_point(aes(colour=year))
@@ -157,8 +157,8 @@ With function `bind_rows()`, it simply append the gapminder to new_data as the n
 bind_rows(new_data,gapminder)
 ```
 
- Finally, we can have plottings to better visualise the spread of different languages:
-```{r}
+ Finally, we can have plottings to better visualise the numbers of different languages in each continent:
+```{r,comparison of different languages}
 temp <- inner_join(gapminder, new_data, by = "country") %>% 
   select(continent,country,lang_name)
 ## spread the language by language name
